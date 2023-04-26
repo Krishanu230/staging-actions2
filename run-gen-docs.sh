@@ -89,6 +89,7 @@ cleanup() {
 
 #machine_type=""
 ls
+env
 verify_wget
 verify_unzip
 verify_tmp
