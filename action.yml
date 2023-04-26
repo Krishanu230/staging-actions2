@@ -14,7 +14,7 @@ runs:
       run: |  
         echo "COMMIT_SHA=${GITHUB_SHA}" >> ${GITHUB_ENV}
         echo "${{ github.action_path }}" >> "$GITHUB_PATH"
-        shell: bash
+      shell: bash
     - name: setup python environment
       uses: actions/setup-python@v4
       with:
