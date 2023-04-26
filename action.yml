@@ -11,9 +11,9 @@ runs:
   using: composite
   steps:
     - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
     - name: Setup Environment (Push)  
       run: |  
         echo "COMMIT_SHA=${GITHUB_SHA}" >> ${GITHUB_ENV}
