@@ -14,6 +14,7 @@ runs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
+      shell: bash
     - name: Setup Environment (Push)  
       run: |  
         echo "COMMIT_SHA=${GITHUB_SHA}" >> ${GITHUB_ENV}
