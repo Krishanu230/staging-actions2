@@ -178,4 +178,4 @@ ls"
 
 #machine_type=""
 ls
-env
+echo "yoooooo"
