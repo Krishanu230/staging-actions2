@@ -90,10 +90,7 @@ cd s3/importer
 npm install -g typescript@4.8.4
 npm install --save-dev -g ts-node@10.9.1
 npm install --save node-fetch@2.6.2 @types/node-fetch@2.6.2
-npm install react react-dom @types/react-dom
-npm install --save lexical @lexical/react @lexical/headless @lexical/yjs 
-npm install --save jsdom ws dotenv
-npm install yjs y-websocket
+npm install --save ws dotenv
 npm install --save cmd-ts
 npm i --save http-status-codes
 ts-node src/index.ts automerge $GIT_REPO $GIT_OWNER $GIT_BRANCH
