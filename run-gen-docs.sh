@@ -23,17 +23,6 @@ GIT_REPO="$REPO_NAME"
 GIT_OWNER="$OWNER_NAME"
 GIT_BRANCH="$BRANCH_NAME"
 REPO_PATH=${1}
-RESULT_DIR="result"
-
-RESULT_DIR=$(get_abs_filename ${RESULT_DIR})
-REPO_PATH=$(get_abs_filename ${REPO_PATH})
-FILES_DIFF=$(get_abs_filename ${FILES_DIFF})
-
-echo FILES_DIFF
-echo REPO_PATH
-echo RESULT_DIR
-
-mkdir -p ${RESULT_DIR}
 
 verify_wget() {
     BIN_WGET=$(which wget) || {
@@ -91,16 +80,13 @@ cleanup() {
 }
 
 #machine_type=""
-ls
-env
 verify_wget
 verify_unzip
 verify_tmp
 check_knowl_cli_version
 cd $WORKING_DIR
 $BIN_UNZIP $WORKING_DIR/$KNOWL_CODE2DOC_NAME -d $WORKING_DIR
-cd s3
-cd importer
+cd s3/importer
 npm install -g typescript@4.8.4
 npm install --save-dev -g ts-node@10.9.1
 npm install --save node-fetch@2.6.2 @types/node-fetch@2.6.2
@@ -111,4 +97,3 @@ npm install yjs y-websocket
 npm install --save cmd-ts
 npm i --save http-status-codes
 ts-node src/index.ts automerge $GIT_REPO $GIT_OWNER $GIT_BRANCH
-ls
