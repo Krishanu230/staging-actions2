@@ -18,7 +18,25 @@ then
     echo 'no repo path provided'
     exit 0
 fi
-FILES_DIFF=${2:-'files_diff.json'}
+if [ -z "$2" ]
+then
+    echo 'no GIT_REPO provided'
+    exit 0
+fi
+if [ -z "$3" ]
+then
+    echo 'no GIT_OWNER provided'
+    exit 0
+fi
+if [ -z "$4" ]
+then
+    echo 'no GIT_BRANCH provided'
+    exit 0
+fi
+
+GIT_REPO=${2}
+GIT_OWNER=${3}
+GIT_BRANCH=${4}
 REPO_PATH=${1}
 RESULT_DIR="result"
 
@@ -97,12 +115,6 @@ check_knowl_cli_version
 cd $WORKING_DIR
 $BIN_UNZIP $WORKING_DIR/$KNOWL_CODE2DOC_NAME -d $WORKING_DIR
 cd s3
-cd code_to_doc
-pip install -r requirements.txt
-python3.9 python_docs.py -p $REPO_PATH -o $RESULT_DIR
-ls $RESULT_DIR
-cat $RESULT_DIR/id_to_pages.json
-cd ..
 cd importer
 npm install -g typescript@4.8.4
 npm install --save-dev -g ts-node@10.9.1
@@ -113,5 +125,5 @@ npm install --save jsdom ws dotenv
 npm install yjs y-websocket
 npm install --save cmd-ts
 npm i --save http-status-codes
-ts-node src/index.ts $RESULT_DIR
+ts-node src/index.ts automerge $GIT_REPO $GIT_OWNER $GIT_BRANCH
 ls
