@@ -20,3 +20,11 @@ runs:
         echo "BRANCH_NAME=${{ github.head_ref }}" >> ${GITHUB_ENV}
         echo "${{ github.action_path }}" >> "$GITHUB_PATH"
       shell: bash
+    - name: Prepare script file
+      run: chmod +x "${{ github.action_path }}/run-gen-docs.sh"
+      shell: bash
+    - name: Run the script file
+      run: run-gen-docs.sh ${{ github.workspace }}
+      shell: bash
+      env:
+        KNOWL_API_KEY: ${{inputs.KNOWL_API_KEY}}
