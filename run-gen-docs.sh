@@ -18,25 +18,10 @@ then
     echo 'no repo path provided'
     exit 0
 fi
-if [ -z "$2" ]
-then
-    echo 'no GIT_REPO provided'
-    exit 0
-fi
-if [ -z "$3" ]
-then
-    echo 'no GIT_OWNER provided'
-    exit 0
-fi
-if [ -z "$4" ]
-then
-    echo 'no GIT_BRANCH provided'
-    exit 0
-fi
 
-GIT_REPO=${2}
-GIT_OWNER=${3}
-GIT_BRANCH=${4}
+GIT_REPO="$REPO_NAME"
+GIT_OWNER="$OWNER_NAME"
+GIT_BRANCH="$BRANCH_NAME"
 REPO_PATH=${1}
 RESULT_DIR="result"
 
